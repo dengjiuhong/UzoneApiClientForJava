@@ -1,0 +1,11 @@
+Hi, 欢迎使用UC乐园Rest接口 java版本的客户端。
+
+UC乐园Rest接口是对UC新推出的UC乐园的做的Http接口，可以实现查询用户基本信息、好友信息、发布说说、添加信息等等基本功能。
+可以用ucweb浏览器打开 u.uc.cn 进入uc乐园，试用里面上线的应用。
+
+这个客户端对请求api服务的方法进行了比较简单的封装，开发者可以直接使用编译好的jar，也可以自己下载源码，在现有的基础上面扩展。
+
+具体使用文档请看: https://github.com/dengjiuhong/UzoneApiClient/wiki
+使用上遇到什么问题，请通过email与我取得联系 dengjiuhong@gmail.com
+
+Btw, 现在UC乐园接口的接入还没有对外开放，有应用需要接入UC乐园的，也可以与我联系。
