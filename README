@@ -6,6 +6,9 @@ UC乐园Rest接口是对UC新推出的UC乐园的做的Http接口，可以实现
 这个客户端对请求api服务的方法进行了比较简单的封装，开发者可以直接使用编译好的jar，也可以自己下载源码，在现有的基础上面扩展。
 
 具体使用文档请看: https://github.com/dengjiuhong/UzoneApiClient/wiki
-使用上遇到什么问题，请通过email与我取得联系 dengjiuhong@gmail.com
 
+使用上遇到什么问题，请通过email与我取得联系 dengjiuhong@gmail.com
 Btw, 现在UC乐园接口的接入还没有对外开放，有应用需要接入UC乐园的，也可以与我联系。
+
+good luck!
+
