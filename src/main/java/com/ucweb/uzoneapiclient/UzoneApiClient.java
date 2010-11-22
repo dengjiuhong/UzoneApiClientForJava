@@ -1,16 +1,4 @@
-/**
- * UC乐园Rest接口 Java SDK
- *
- * @category   main
- * @package    com.ucweb.uzoneapiclient
- * @author     Jiuhong Deng <dengjiuhong@gmail.com>
- * @version    $Id:$
- * @copyright  Jiuhong Deng
- * @link       http://u.uc.cn/
- * @since      File available since Release 1.0.0
- */
 package com.ucweb.uzoneapiclient;
-
 import com.ucweb.uzoneapiclient.utils.UzoneApiClientLogger;
 import com.ucweb.uzoneapiclient.interfaces.UzoneApiClientInterface;
 
@@ -33,6 +21,17 @@ import org.apache.commons.httpclient.HttpClient;
 import org.apache.commons.httpclient.HttpMethod;
 import org.apache.commons.httpclient.methods.GetMethod;
 import org.json.JSONObject;
+/**
+ * UC乐园Rest接口 Java SDK
+ *
+ * @category   main
+ * @package    com.ucweb.uzoneapiclient
+ * @author     Jiuhong Deng <dengjiuhong@gmail.com>
+ * @version    $Id:$
+ * @copyright  Jiuhong Deng
+ * @link       http://u.uc.cn/
+ * @since      File available since Release 1.0.0
+ */
 public class UzoneApiClient implements UzoneApiClientInterface {
     /**
      * @desc 记录日志的工具
@@ -99,6 +98,36 @@ public class UzoneApiClient implements UzoneApiClientInterface {
     public List<String> callMathod(Map<String, String> param, String method) {
         Log.d("callMathod", "start to call method " + method);
         return this.parseResponse(this.httpRequest(param, method));
+    }
+    /**
+     * @desc 获取请求返回的
+     */
+    public String getResponseData()
+    {
+         if (ResponseStatus.containsKey("data")) {
+             return ResponseStatus.get("data");
+         }
+         return null;
+    }
+    /**
+     * @desc check callMethod is success!
+     * @return boolean
+     */
+    public boolean checkCallMethodIsSuccess()
+    {
+        String status = this.getCallMethodStatus("status");
+        if (status.equals("ok")){
+            return true;
+        }
+        return false;
+    }
+    /**
+     * @desc 获取失败时候的描述信息
+     * @return 
+     */
+    public String getErrorMessage()
+    {
+        return this.getCallMethodStatus("msg");
     }
     /**
      * @desc  获取接口请求返回的状态 
@@ -453,7 +482,9 @@ public class UzoneApiClient implements UzoneApiClientInterface {
             if (jsonObj.has("status")) {
                 Log.d("parseResponseStatus", "response has key status: " + jsonObj.getString("status"));
                 status.put("status", jsonObj.getString("status"));
+                status.put("code", jsonObj.getString("code"));
                 status.put("msg", jsonObj.getString("msg"));
+                status.put("data", jsonObj.getString("data"));
             }
         } catch (Exception e) {
             Log.e("parseResponseStatus", "parseResponseStatus error : " + e);

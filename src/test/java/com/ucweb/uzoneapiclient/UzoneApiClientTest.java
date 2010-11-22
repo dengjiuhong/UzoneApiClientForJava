@@ -1,6 +1,7 @@
 package com.ucweb.uzoneapiclient;
 
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 import junit.framework.Test;
 import junit.framework.TestCase;
@@ -60,8 +61,15 @@ public class UzoneApiClientTest
             // 手工请求指定的接口
             // 1, 获取用户的基本信息
             Map<String, String>  param = new HashMap<String, String>();
-            param.put("uids", "10001,10002");
+            param.put("uids", "11167903,11167902");
             client.callMathod(param, "user.getInfo");
+            if (client.checkCallMethodIsSuccess()){
+                // 请求成功, 显示结果
+                System.out.println(client.getResponseData());
+            } else {
+                // 打印失败日志
+                System.out.println(client.getErrorMessage());
+            }
             // 2, 获取当前用户的好友列表
             Map<String, String>  friendsGetParam = new HashMap<String, String>();
             client.callMathod(friendsGetParam, "friends.get");
